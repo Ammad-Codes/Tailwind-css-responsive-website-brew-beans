@@ -1,0 +1,412 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>BrewBean | Your Daily Ritual, Perfectly Brewed</title>
+<script src="https://cdn.tailwindcss.com"></script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@500;600;700;800&family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" rel="stylesheet">
+<script>
+  tailwind.config = {
+    theme: {
+      extend: {
+        colors: {
+          coffee: {
+            50: '#FAF6F0',
+            100: '#F3EBDF',
+            900: '#1F140F',
+            800: '#2B1B12',
+            700: '#3A2418',
+          },
+          amber: {
+            DEFAULT: '#D98A2B',
+            dark: '#B8701E',
+          }
+        },
+        fontFamily: {
+          display: ['"Playfair Display"', 'serif'],
+          body: ['"Poppins"', 'sans-serif'],
+        }
+      }
+    }
+  }
+</script>
+<style>
+  html { scroll-behavior: smooth; }
+  body { font-family: 'Poppins', sans-serif; }
+  .font-display { font-family: 'Playfair Display', serif; }
+  .material-symbols-outlined {
+    font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+    vertical-align: middle;
+  }
+
+  /* Page load animation */
+  @keyframes fadeInUp {
+    from { opacity: 0; transform: translateY(24px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+  .reveal {
+    opacity: 0;
+    animation: fadeInUp 0.9s ease forwards;
+  }
+  .reveal-1 { animation-delay: .1s; }
+  .reveal-2 { animation-delay: .3s; }
+  .reveal-3 { animation-delay: .5s; }
+  .reveal-4 { animation-delay: .7s; }
+
+  @media (prefers-reduced-motion: reduce) {
+    .reveal { animation: none; opacity: 1; }
+  }
+
+  /* Review card hover */
+  .review-card {
+    transition: transform .35s ease, box-shadow .35s ease, background-color .35s ease;
+  }
+  .review-card:hover {
+    transform: translateY(-8px);
+    background-color: #3A2418;
+    box-shadow: 0 20px 35px -12px rgba(0,0,0,0.5);
+  }
+</style>
+</head>
+<body class="bg-coffee-50 text-coffee-900">
+
+<!-- NAVBAR -->
+<header class="bg-coffee-50/95 backdrop-blur sticky top-0 z-50 border-b border-coffee-900/5">
+  <nav class="max-w-7xl mx-auto flex items-center justify-between px-6 py-4">
+    <a href="#home" class="flex items-center gap-3">
+      <span class="w-10 h-10 rounded-xl bg-amber flex items-center justify-center text-white">
+        <span class="material-symbols-outlined">coffee</span>
+      </span>
+      <span class="font-display text-2xl font-bold text-amber-dark">BrewBean</span>
+    </a>
+
+    <ul class="hidden md:flex items-center gap-9 text-[15px] font-medium text-coffee-800">
+      <li><a href="#home" class="hover:text-amber-dark transition-colors">Home</a></li>
+      <li><a href="#about" class="hover:text-amber-dark transition-colors">About</a></li>
+      <li><a href="#menu" class="hover:text-amber-dark transition-colors">Menu</a></li>
+      <li><a href="#reviews" class="hover:text-amber-dark transition-colors">Reviews</a></li>
+      <li><a href="#contact" class="hover:text-amber-dark transition-colors">Contact</a></li>
+    </ul>
+
+    <a href="#contact" class="hidden sm:inline-block bg-amber hover:bg-amber-dark text-white font-medium px-6 py-2.5 rounded-full transition-colors">Visit Us</a>
+
+    <button id="menuBtn" class="md:hidden text-coffee-800" aria-label="Open menu">
+      <span class="material-symbols-outlined text-3xl">menu</span>
+    </button>
+  </nav>
+
+  <ul id="mobileMenu" class="hidden md:hidden flex-col gap-4 px-6 pb-6 text-coffee-800 font-medium">
+    <li><a href="#home" class="block">Home</a></li>
+    <li><a href="#about" class="block">About</a></li>
+    <li><a href="#menu" class="block">Menu</a></li>
+    <li><a href="#reviews" class="block">Reviews</a></li>
+    <li><a href="#contact" class="block">Contact</a></li>
+  </ul>
+</header>
+
+<!-- HERO -->
+<section id="home" class="relative overflow-hidden">
+  <div class="absolute inset-0">
+    <img src="https://images.unsplash.com/photo-1509042239860-f550ce710b93?auto=format&fit=crop&w=1600&q=80" alt="Coffee shop ambience" class="w-full h-full object-cover">
+    <div class="absolute inset-0 bg-gradient-to-r from-coffee-900/95 via-coffee-900/80 to-coffee-900/40 md:bg-gradient-to-b md:from-coffee-900/90 md:via-coffee-900/70 md:to-coffee-900/60"></div>
+  </div>
+
+  <div class="relative max-w-7xl mx-auto px-6 py-24 md:py-36">
+    <div class="max-w-xl mx-auto text-left md:text-center md:max-w-2xl">
+      <p class="reveal reveal-1 text-amber tracking-wide font-medium mb-5">EST. 2016 &bull; LOCAL ROASTERY</p>
+      <h1 class="reveal reveal-2 font-display text-4xl sm:text-5xl md:text-6xl font-bold leading-tight text-coffee-50">
+        Your Daily Ritual,<br>
+        <span class="text-amber">Perfectly Brewed.</span>
+      </h1>
+      <p class="reveal reveal-3 mt-6 text-coffee-100/90 text-base sm:text-lg leading-relaxed max-w-md md:mx-auto">
+        Ethically sourced beans, roasted in small batches and poured with care. Brew &amp; Bean is the neighborhood spot for slow mornings and good coffee.
+      </p>
+      <div class="reveal reveal-4 mt-9 flex flex-wrap gap-4 md:justify-center">
+        <a href="#menu" class="bg-amber hover:bg-amber-dark text-white font-medium px-7 py-3.5 rounded-full transition-colors inline-flex items-center gap-2">
+          <span class="material-symbols-outlined text-xl">coffee</span> View Menu
+        </a>
+        <a href="#contact" class="border border-coffee-50/50 hover:border-amber hover:text-amber text-coffee-50 font-medium px-7 py-3.5 rounded-full transition-colors inline-flex items-center gap-2">
+          <span class="material-symbols-outlined text-xl">location_on</span> Find Us
+        </a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- STATS -->
+<section class="bg-coffee-900 text-coffee-50">
+  <div class="max-w-6xl mx-auto grid grid-cols-3 divide-x divide-coffee-50/10 px-6 py-14 text-center">
+    <div class="px-2">
+      <span class="material-symbols-outlined text-4xl text-amber mb-2">coffee</span>
+      <p class="font-display text-3xl sm:text-4xl font-bold text-amber">12+</p>
+      <p class="mt-2 text-xs sm:text-sm tracking-wide text-coffee-100/80">Years Brewing</p>
+    </div>
+    <div class="px-2">
+      <span class="material-symbols-outlined text-4xl text-amber mb-2">groups</span>
+      <p class="font-display text-3xl sm:text-4xl font-bold text-amber">40k</p>
+      <p class="mt-2 text-xs sm:text-sm tracking-wide text-coffee-100/80">Happy Customers</p>
+    </div>
+    <div class="px-2">
+      <span class="material-symbols-outlined text-4xl text-amber mb-2">eco</span>
+      <p class="font-display text-3xl sm:text-4xl font-bold text-amber">15</p>
+      <p class="mt-2 text-xs sm:text-sm tracking-wide text-coffee-100/80">Origin Beans</p>
+    </div>
+  </div>
+</section>
+
+<!-- OUR STORY -->
+<section id="about" class="py-20 md:py-28 px-6">
+  <div class="max-w-6xl mx-auto grid md:grid-cols-2 gap-14 items-center">
+    <div>
+      <p class="text-amber-dark font-medium tracking-wide mb-3">OUR STORY</p>
+      <h2 class="font-display text-3xl sm:text-4xl font-bold leading-snug mb-5">
+        Crafted With Passion,<br>Served With Love
+      </h2>
+      <p class="text-coffee-800/80 leading-relaxed mb-7 max-w-md">
+        What started as a tiny cart on Elm Street is now the heart of the neighborhood. We roast in-house every week and work directly with growers to bring you the freshest cup possible.
+      </p>
+      <ul class="space-y-4 mb-9">
+        <li class="flex items-center gap-3">
+          <span class="w-6 h-6 rounded-full bg-amber text-white flex items-center justify-center shrink-0">
+            <span class="material-symbols-outlined text-sm">check</span>
+          </span>
+          <span class="text-coffee-800">Ethically sourced beans</span>
+        </li>
+        <li class="flex items-center gap-3">
+          <span class="w-6 h-6 rounded-full bg-amber text-white flex items-center justify-center shrink-0">
+            <span class="material-symbols-outlined text-sm">check</span>
+          </span>
+          <span class="text-coffee-800">Small-batch roasting</span>
+        </li>
+        <li class="flex items-center gap-3">
+          <span class="w-6 h-6 rounded-full bg-amber text-white flex items-center justify-center shrink-0">
+            <span class="material-symbols-outlined text-sm">check</span>
+          </span>
+          <span class="text-coffee-800">Handcrafted pastries</span>
+        </li>
+        <li class="flex items-center gap-3">
+          <span class="w-6 h-6 rounded-full bg-amber text-white flex items-center justify-center shrink-0">
+            <span class="material-symbols-outlined text-sm">check</span>
+          </span>
+          <span class="text-coffee-800">Free WiFi &amp; cozy seating</span>
+        </li>
+      </ul>
+      <a href="#menu" class="bg-amber hover:bg-amber-dark text-white font-medium px-7 py-3.5 rounded-full transition-colors inline-flex items-center gap-2">
+        Explore Menu <span class="material-symbols-outlined text-xl">arrow_forward</span>
+      </a>
+    </div>
+
+    <div class="grid grid-cols-2 gap-4">
+      <img src="https://images.unsplash.com/photo-1497935586351-b67a49e012bf?auto=format&fit=crop&w=500&q=80" alt="Roasted coffee beans" class="rounded-2xl object-cover w-full h-40 sm:h-52">
+      <img src="https://images.unsplash.com/photo-1442512595331-e89e73853f31?auto=format&fit=crop&w=500&q=80" alt="Pour over coffee brewing" class="rounded-2xl object-cover w-full h-40 sm:h-52">
+      <img src="https://images.unsplash.com/photo-1447933601403-0c6688de566e?auto=format&fit=crop&w=500&q=80" alt="Bag of handcrafted coffee" class="rounded-2xl object-cover w-full h-40 sm:h-52">
+      <img src="https://images.unsplash.com/photo-1521017432531-fbd92d768814?auto=format&fit=crop&w=500&q=80" alt="Hands holding latte cups" class="rounded-2xl object-cover w-full h-40 sm:h-52">
+    </div>
+  </div>
+</section>
+
+<!-- TESTIMONIALS -->
+<section id="reviews" class="bg-coffee-900 text-coffee-50 py-20 md:py-28 px-6">
+  <div class="max-w-6xl mx-auto text-center">
+    <p class="text-amber font-medium tracking-wide mb-3">CUSTOMER LOVE</p>
+    <h2 class="font-display text-3xl sm:text-4xl font-bold mb-3">What People Are Saying</h2>
+    <p class="text-coffee-100/70 mb-14">Real words from the regulars who make our mornings worth it.</p>
+
+    <div class="grid md:grid-cols-3 gap-6 text-left">
+      <div class="review-card bg-coffee-800 rounded-2xl p-7 cursor-default">
+        <div class="flex text-amber mb-4">
+          <span class="material-symbols-outlined" style="font-variation-settings:'FILL' 1;">star</span>
+          <span class="material-symbols-outlined" style="font-variation-settings:'FILL' 1;">star</span>
+          <span class="material-symbols-outlined" style="font-variation-settings:'FILL' 1;">star</span>
+          <span class="material-symbols-outlined" style="font-variation-settings:'FILL' 1;">star</span>
+          <span class="material-symbols-outlined" style="font-variation-settings:'FILL' 1;">star</span>
+        </div>
+        <p class="text-coffee-100/90 leading-relaxed mb-6">"Best latte in town, hands down. The staff remembers my order and always greets me with a smile."</p>
+        <div class="flex items-center gap-3">
+          <img src="https://images.unsplash.com/photo-1544005313-94ddf0286df2?auto=format&fit=crop&w=100&q=80" alt="Amina R." class="w-11 h-11 rounded-full object-cover">
+          <div>
+            <p class="font-semibold text-coffee-50">Amina R.</p>
+            <p class="text-sm text-amber">Regular Customer</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="review-card bg-coffee-800 rounded-2xl p-7 cursor-default">
+        <div class="flex text-amber mb-4">
+          <span class="material-symbols-outlined" style="font-variation-settings:'FILL' 1;">star</span>
+          <span class="material-symbols-outlined" style="font-variation-settings:'FILL' 1;">star</span>
+          <span class="material-symbols-outlined" style="font-variation-settings:'FILL' 1;">star</span>
+          <span class="material-symbols-outlined" style="font-variation-settings:'FILL' 1;">star</span>
+          <span class="material-symbols-outlined" style="font-variation-settings:'FILL' 1;">star</span>
+        </div>
+        <p class="text-coffee-100/90 leading-relaxed mb-6">"Cozy atmosphere, great WiFi, and the cold brew is dangerously good. My favorite work-from-cafe spot."</p>
+        <div class="flex items-center gap-3">
+          <img src="https://images.unsplash.com/photo-1500648767791-00dcc994a43e?auto=format&fit=crop&w=100&q=80" alt="Jordan P." class="w-11 h-11 rounded-full object-cover">
+          <div>
+            <p class="font-semibold text-coffee-50">Jordan P.</p>
+            <p class="text-sm text-amber">Regular Customer</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="review-card bg-coffee-800 rounded-2xl p-7 cursor-default">
+        <div class="flex text-amber mb-4">
+          <span class="material-symbols-outlined" style="font-variation-settings:'FILL' 1;">star</span>
+          <span class="material-symbols-outlined" style="font-variation-settings:'FILL' 1;">star</span>
+          <span class="material-symbols-outlined" style="font-variation-settings:'FILL' 1;">star</span>
+          <span class="material-symbols-outlined" style="font-variation-settings:'FILL' 1;">star</span>
+          <span class="material-symbols-outlined" style="font-variation-settings:'FILL' 1;">star</span>
+        </div>
+        <p class="text-coffee-100/90 leading-relaxed mb-6">"You can taste the quality in every cup. Love that they roast their own beans in-house."</p>
+        <div class="flex items-center gap-3">
+          <img src="https://images.unsplash.com/photo-1508214751196-bcfd4ca60f91?auto=format&fit=crop&w=100&q=80" alt="Sara M." class="w-11 h-11 rounded-full object-cover">
+          <div>
+            <p class="font-semibold text-coffee-50">Sara M.</p>
+            <p class="text-sm text-amber">Coffee Enthusiast</p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="flex justify-center gap-2 mt-10">
+      <span class="w-6 h-2 rounded-full bg-amber"></span>
+      <span class="w-2 h-2 rounded-full bg-coffee-50/30"></span>
+      <span class="w-2 h-2 rounded-full bg-coffee-50/30"></span>
+    </div>
+  </div>
+</section>
+
+<!-- GET IN TOUCH -->
+<section id="contact" class="py-20 md:py-28 px-6">
+  <div class="max-w-5xl mx-auto text-center">
+    <p class="text-amber-dark font-medium tracking-wide mb-3">GET IN TOUCH</p>
+    <h2 class="font-display text-3xl sm:text-4xl font-bold mb-14">Visit Our Shop</h2>
+
+    <div class="grid grid-cols-2 md:grid-cols-4 gap-10">
+      <div>
+        <div class="w-14 h-14 mx-auto rounded-full bg-amber text-white flex items-center justify-center mb-4">
+          <span class="material-symbols-outlined text-2xl">location_on</span>
+        </div>
+        <p class="font-semibold mb-1">Location</p>
+        <p class="text-sm text-coffee-800/70">Islamabad, Pakistan</p>
+      </div>
+      <div>
+        <div class="w-14 h-14 mx-auto rounded-full bg-amber text-white flex items-center justify-center mb-4">
+          <span class="material-symbols-outlined text-2xl">schedule</span>
+        </div>
+        <p class="font-semibold mb-1">Opening Hours</p>
+        <p class="text-sm text-coffee-800/70">Mon–Fri: 7am – 8pm<br>Sat–Sun: 8am – 9pm</p>
+      </div>
+      <div>
+        <div class="w-14 h-14 mx-auto rounded-full bg-amber text-white flex items-center justify-center mb-4">
+          <span class="material-symbols-outlined text-2xl">call</span>
+        </div>
+        <p class="font-semibold mb-1">Phone</p>
+        <p class="text-sm text-coffee-800/70">+92 300 1234567</p>
+      </div>
+      <div>
+        <div class="w-14 h-14 mx-auto rounded-full bg-amber text-white flex items-center justify-center mb-4">
+          <span class="material-symbols-outlined text-2xl">mail</span>
+        </div>
+        <p class="font-semibold mb-1">Email</p>
+        <p class="text-sm text-coffee-800/70">hello@brewexample.com</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- NEWSLETTER -->
+<section class="bg-coffee-900 text-coffee-50 py-16 px-6">
+  <div class="max-w-2xl mx-auto text-center">
+    <h2 class="font-display text-3xl sm:text-4xl font-bold mb-3">Never Miss a Brew</h2>
+    <p class="text-coffee-100/70 mb-8">Subscribe for weekly specials, new menu drops, and exclusive discounts.</p>
+    <form class="flex flex-col sm:flex-row gap-3 max-w-lg mx-auto">
+      <input type="email" placeholder="Enter your email" class="flex-1 px-5 py-3.5 rounded-full text-coffee-900 placeholder-coffee-900/50 outline-none focus:ring-2 focus:ring-amber">
+      <button type="submit" class="bg-amber hover:bg-amber-dark text-white font-medium px-7 py-3.5 rounded-full transition-colors inline-flex items-center justify-center gap-2">
+        <span class="material-symbols-outlined text-xl">send</span> Subscribe
+      </button>
+    </form>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer id="menu" class="bg-coffee-800 text-coffee-100/80 py-14 px-6">
+  <div class="max-w-6xl mx-auto grid sm:grid-cols-2 md:grid-cols-4 gap-10">
+    <div>
+      <div class="flex items-center gap-2 mb-4">
+        <span class="w-9 h-9 rounded-lg bg-amber flex items-center justify-center text-white">
+          <span class="material-symbols-outlined text-xl">coffee</span>
+        </span>
+        <span class="font-display text-xl font-bold text-coffee-50">BrewBean</span>
+      </div>
+      <p class="text-sm leading-relaxed mb-5">A cozy corner for coffee lovers. Freshly roasted, thoughtfully served, every single day.</p>
+      <div class="flex gap-3">
+        <a href="#" aria-label="Facebook" class="w-9 h-9 rounded-full border border-coffee-50/20 flex items-center justify-center hover:bg-amber hover:border-amber transition-colors">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="w-4 h-4">
+            <path d="M22 12.06C22 6.5 17.52 2 12 2S2 6.5 2 12.06C2 17.08 5.66 21.23 10.44 22v-7.02H7.9v-2.92h2.54V9.85c0-2.5 1.49-3.89 3.77-3.89 1.09 0 2.24.2 2.24.2v2.46h-1.26c-1.24 0-1.63.77-1.63 1.56v1.88h2.78l-.44 2.92h-2.34V22C18.34 21.23 22 17.08 22 12.06Z"/>
+          </svg>
+        </a>
+        <a href="#" aria-label="Instagram" class="w-9 h-9 rounded-full border border-coffee-50/20 flex items-center justify-center hover:bg-amber hover:border-amber transition-colors">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="w-4 h-4">
+            <path d="M12 2.16c3.2 0 3.58.01 4.85.07 1.17.05 1.8.25 2.23.41.56.22.96.47 1.38.9.42.42.68.82.9 1.38.16.42.36 1.06.41 2.23.06 1.27.07 1.65.07 4.85s-.01 3.58-.07 4.85c-.05 1.17-.25 1.8-.41 2.23-.22.56-.47.96-.9 1.38-.42.42-.82.68-1.38.9-.42.16-1.06.36-2.23.41-1.27.06-1.65.07-4.85.07s-3.58-.01-4.85-.07c-1.17-.05-1.8-.25-2.23-.41-.56-.22-.96-.47-1.38-.9-.42-.42-.68-.82-.9-1.38-.16-.42-.36-1.06-.41-2.23C2.17 15.58 2.16 15.2 2.16 12s.01-3.58.07-4.85c.05-1.17.25-1.8.41-2.23.22-.56.47-.96.9-1.38.42-.42.82-.68 1.38-.9.42-.16 1.06-.36 2.23-.41C8.42 2.17 8.8 2.16 12 2.16Zm0 1.62c-3.15 0-3.5.01-4.73.07-1.02.05-1.58.22-1.95.36-.49.19-.84.42-1.2.79-.37.36-.6.71-.79 1.2-.14.37-.31.93-.36 1.95-.06 1.23-.07 1.58-.07 4.73s.01 3.5.07 4.73c.05 1.02.22 1.58.36 1.95.19.49.42.84.79 1.2.36.37.71.6 1.2.79.37.14.93.31 1.95.36 1.23.06 1.58.07 4.73.07s3.5-.01 4.73-.07c1.02-.05 1.58-.22 1.95-.36.49-.19.84-.42 1.2-.79.37-.36.6-.71.79-1.2.14-.37.31-.93.36-1.95.06-1.23.07-1.58.07-4.73s-.01-3.5-.07-4.73c-.05-1.02-.22-1.58-.36-1.95-.19-.49-.42-.84-.79-1.2a3.25 3.25 0 0 0-1.2-.79c-.37-.14-.93-.31-1.95-.36-1.23-.06-1.58-.07-4.73-.07Zm0 4.38a5.84 5.84 0 1 1 0 11.68 5.84 5.84 0 0 1 0-11.68Zm0 1.62a4.22 4.22 0 1 0 0 8.44 4.22 4.22 0 0 0 0-8.44Zm6.06-1.8a1.37 1.37 0 1 1-2.73 0 1.37 1.37 0 0 1 2.73 0Z"/>
+          </svg>
+        </a>
+        <a href="#" aria-label="X" class="w-9 h-9 rounded-full border border-coffee-50/20 flex items-center justify-center hover:bg-amber hover:border-amber transition-colors">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="w-4 h-4">
+            <path d="M18.24 2.75h3.31l-7.23 8.26 8.5 10.24h-6.66l-5.22-6.34-5.97 6.34H1.66l7.74-8.84L1.25 2.75h6.83l4.72 5.78 5.44-5.78Zm-1.16 16.5h1.83L7.02 4.62H5.06l12.02 14.63Z"/>
+          </svg>
+        </a>
+      </div>
+    </div>
+
+    <div>
+      <p class="font-display text-lg font-semibold text-coffee-50 mb-4">Explore</p>
+      <ul class="space-y-2.5 text-sm">
+        <li><a href="#home" class="hover:text-amber transition-colors">Home</a></li>
+        <li><a href="#about" class="hover:text-amber transition-colors">About</a></li>
+        <li><a href="#menu" class="hover:text-amber transition-colors">Menu</a></li>
+        <li><a href="#reviews" class="hover:text-amber transition-colors">Reviews</a></li>
+        <li><a href="#contact" class="hover:text-amber transition-colors">Contact</a></li>
+      </ul>
+    </div>
+
+    <div>
+      <p class="font-display text-lg font-semibold text-coffee-50 mb-4">Menu</p>
+      <ul class="space-y-2.5 text-sm">
+        <li><a href="#" class="hover:text-amber transition-colors">Coffee</a></li>
+        <li><a href="#" class="hover:text-amber transition-colors">Cold Brews</a></li>
+        <li><a href="#" class="hover:text-amber transition-colors">Bakery</a></li>
+      </ul>
+    </div>
+
+    <div>
+      <p class="font-display text-lg font-semibold text-coffee-50 mb-4">Contact</p>
+      <ul class="space-y-3 text-sm">
+        <li class="flex items-center gap-2">
+          <span class="material-symbols-outlined text-base">location_on</span> Islamabad, Pakistan
+        </li>
+        <li class="flex items-center gap-2">
+          <span class="material-symbols-outlined text-base">call</span> +92 300 1234567
+        </li>
+        <li class="flex items-center gap-2">
+          <span class="material-symbols-outlined text-base">mail</span> hello@brewexample.com
+        </li>
+      </ul>
+    </div>
+  </div>
+
+  <p class="text-center text-xs text-coffee-100/40 mt-12">© 2026 Brew &amp; Bean Coffee Shop. All rights reserved.</p>
+</footer>
+
+<script>
+  document.getElementById('menuBtn').addEventListener('click', function() {
+    document.getElementById('mobileMenu').classList.toggle('hidden');
+    document.getElementById('mobileMenu').classList.toggle('flex');
+  });
+</script>
+
+</body>
+</html>
